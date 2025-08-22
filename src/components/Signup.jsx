@@ -8,22 +8,27 @@ const Signup = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false) // 🔹 loading state
   let { pay } = useContext(PaymentContext)
 
   let submitHandler = async (e) => {
+    e.preventDefault()
     try {
-      e.preventDefault()
-
+      setLoading(true) // start loading
       let user = { username, email, password }
       let signup = await axios.post("/user/signup", user)
-      // if(signup.data.message == "Login Successful"){
+      
+      // Uncomment if you want conditional navigation
+      // if(signup.data.message === "Login Successful"){
       //   navigate("/test")
       //   return
       // }
-      pay(499)
-
+      
+      await pay(499) // wait for payment
     } catch (error) {
       console.error(error)
+    } finally {
+      setLoading(false) // stop loading
     }
   }
 
@@ -85,9 +90,14 @@ const Signup = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200"
+            disabled={loading} // disable button while loading
+            className={`w-full py-2 rounded-lg font-semibold transition duration-200 ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 text-white"
+            }`}
           >
-            Signup & Pay ₹499
+            {loading ? "Processing..." : "Signup & Pay ₹499"}
           </button>
         </form>
 
