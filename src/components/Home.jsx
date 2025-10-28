@@ -25,14 +25,14 @@ const Home = () => {
       //   navigate("/signup")
       // }
 
-      navigate("/signup")
+      navigate("/test")
     } catch (error) {
       console.log(error)
-      navigate("/signup")
+      
     }
   }
   return (
-    <div className="min-h-screen w-full bg-gray-100 p-6   ">
+    <div className="min-h-screen w-full bg-gray-100 p-6 sm:pl-50   ">
       {/* Header */}
       <header className="text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-800">

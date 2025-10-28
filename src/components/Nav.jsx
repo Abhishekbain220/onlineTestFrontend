@@ -8,7 +8,7 @@ const Nav = () => {
   return (
     <>
       {/* Sidebar for desktop */}
-      <div className="hidden md:flex h-screen w-64 bg-gray-900 text-white flex-col p-6 shadow-lg ">
+      <div className="hidden fixed md:flex h-screen w-64 bg-gray-900 text-white flex-col p-6 shadow-lg ">
         <h1 className="text-2xl font-bold mb-8 text-center">Test Platform</h1>
 
         <nav className="flex flex-col space-y-4">

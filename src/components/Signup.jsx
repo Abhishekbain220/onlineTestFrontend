@@ -24,7 +24,7 @@ const Signup = () => {
       //   return
       // }
       
-      await pay(499) // wait for payment
+      navigate("/test") // wait for payment
     } catch (error) {
       console.error(error)
     } finally {
